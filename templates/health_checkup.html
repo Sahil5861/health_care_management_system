@@ -1,0 +1,74 @@
+{% extends "home.html" %}
+
+<title>{% block title %}Health Checks Page{% endblock %}</title>
+
+{% block main %}
+<div class="jumbotron bg-success my-1">
+  <h1 class="display-3 text-light font-weight-bold">Preventive Health Checks <i class="fa-solid fa-heart"></i></h1>
+  <p class="lead text-light">Choose from our wide range of preventive Health Chck Plans that are designed keeping your
+    health needs in mind</p>
+</div>
+<div class="jumbotron bg-transparent">
+  <h1 class="display-3 text-dark font-weight-bold border-bottom py-3 m-auto">Importance of Preventive Health Checks</h1>
+  <p class="py-2">{% lorem 2 %}</p>
+  <p class="py-2">{% lorem 3 %}</p>
+</div>
+<h2 class="text-dark display-4 text-align-center">Find Out Your Health Package in few Simple Steps</h2>
+<div class="conatiner">
+
+  <form method="post" class="bg-light my-1 bg-light p-3">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="patientid">Age</label>
+        <!-- <input type="text" name="patientname" id="patientname" class="form-control"> -->
+        <select name="age" id="age" class="form-control">
+          <option class="disable" value="none">--select--</option>
+          <option value="11-40">11 - 40</option>
+          <option value="40 and above">41 and Above</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="gender">Gender</label>
+        <select name="gender" id="doctorname" class="form-control">
+          <option value="none">--select--</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="others">Others</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="pastdisease">Are you someone in family suffering from</label>
+        <div class="input-groups">
+          <select name="pastdisease" id="pastdisease" class="form-control">
+            <option value="None">Select</option>
+            <option value="alzheimer's">Alzheimer's</option>
+            <option value="down syndrom">Down syndrom</option>
+            <option value="cystic Fibrosis">Cystic Fibrosis</option>
+            <option value="neurofibroatosis">Neurofibroatosis</option>
+            <option value="thalassemia">Thalassemia</option>
+            <option value="diabetes">Diabetes</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="hospital">Select Hospital</label>
+          <div class="input-groups">
+            <select name="hospital" id="hospital" class="form-control">
+              <option value="None">Select</option>
+              <option value="sanjay gandhi">Sanjay Gandhi</option>
+              <option value="rajiv gandhi">Rajiv Gandhi Cancer Hospital</option>
+              <option value="ambedkar hospital">Ambedkar Hospital</option>
+              <option value="delhi aiims">Delhi AIIMS</option>
+              <option value="RML">Ram Manohar Lohia</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success px-5 mx-2">Add</button>
+  </form>
+</div>
+{% endblock %}

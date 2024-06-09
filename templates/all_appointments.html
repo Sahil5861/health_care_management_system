@@ -1,0 +1,35 @@
+{% extends "home.html" %}
+
+{% block main %}
+<div class="container my-4 p-4">
+  <h1>All Appointments </h1>
+    <table class="table table-bordered bg-light" style="text-align: center;">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Patient's Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Date of Appointment</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for x in myappointment %}
+            <tr>
+                <th scope="col">{{x.id}}</th>
+                <td scope="col"><a href="#">{{x.patient_name}}</a></td>
+                <td scope="col">{{x.department}}</td>
+                <td scope="col">{{x.appointmaent_date}}</td>
+                <td scope="col">
+                  <a href="edit/{{x.id}}" class="btn btn-success px-4">Edit</a>
+                  <a href="delete/{{x.id}}" class="btn btn-danger">Delete</a>
+                </td>
+
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock %}
+
+<script src="../static/script.js"></script>

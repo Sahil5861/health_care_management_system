@@ -1,0 +1,60 @@
+
+
+{% extends "home.html" %}
+
+<title>{% block title %}Add Appointment Page{% endblock %}</title>
+  {% block main %}
+  <div class="jumbotron bg-success my-1">
+    <form method="post" class="container border border-light rounded p-3 bg-light">
+      {% csrf_token %}
+      <h1 class="text-success text-dark">Add Appointment</h1>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="patientid">Patient Name</label>
+          <input type="text" name="patientname" id="patientname" class="form-control">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="department">Department</label>
+          <select name="department" id="department" class="form-control">
+            <option value="none">--select--</option>
+            <div class="dropdown-divider"></div>
+            <option value="neuro">Neuro</option>
+            <option value="cardiologist">Cardio loginst</option>
+            <option value="ent">ENT</option> 
+
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="doctorname">Doctor Name</label>
+          <select name="doctorname" id="doctorname" class="form-control">
+            <option value="none">--select--</option>
+            <div class="dropdown-divider"></div>
+            <option value="sahil">Dr.Sahil</option>
+            <option value="suhail">Dr.Suhail</option>
+            <option value="suhana">Dr.Suhana</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="datetime">Appointmnet Date</label>
+          <div class="input-groups">
+            <input type="datetime" name="datetime" id="datetime" class="form-control" placeholder="yyyy-mm-dd">
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="timeslot">Time Slot</label>
+          <input type="time" name="timeslot" id="timeslot" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea name="problem" id="problem" cols="30" rows="5" class="form-control" placeholder="Problem"></textarea>
+      </div>
+      <button type="submit" class="btn btn-success px-5 active"><h3>Add</h3></button>
+      <button type="reset" class="btn btn-secondary px-5"><h3>Reset</h3></button>
+    </form>
+  </div>
+
+  {% endblock %}
+  

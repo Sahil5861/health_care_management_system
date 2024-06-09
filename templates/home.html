@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/ef6a528b23.js" crossorigin="anonymous"></script>
+  <!-- bg-light p-2 rounded text-dark font-weight-bold -->
+  <title>{% block title %}Home Page{% endblock %}</title>
+  <style>
+    .main{
+      min-height: 600px;
+      height: max-content;
+    }
+    .brand{
+      height: 12vh;
+      width: 100%;
+    }
+    .brand h1{
+      display: inline;
+      margin: 0 4px;
+      line-height: 12vh;
+    }
+    .icons{
+      list-style: none;
+      float: right;
+    }
+    .icons li{
+      display: inline;
+      margin: 0 20px;
+    }
+    .icons li a{
+      text-decoration: none;
+
+    }
+    .brand-name{
+      background: linear-gradient(-45deg,darkgreen ,lightgreen, #ddd, #fff  );
+      background-clip: text;
+      color: transparent;
+      font-weight: 600;
+      font-size: 50px;
+    }
+    .link{
+      height: 80px;
+      display: flex;
+      margin: 0;
+      justify-content: flex-start;
+    }
+    .link li{
+      list-style: none;
+    }
+    .link li a i{
+      font-size: 40px;
+      color: seagreen;
+    }
+  </style>
+</head>
+
+<body style="background-color: lightgreen;">
+  <!-- navbar -->
+  {% block navbar %}
+  <div class="brand bg-dark navbar navbar-expand-lg">
+    <h1 class="brand-name">Max Health</h1>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success py-3">
+    <a class="navbar-brand btn btn-success active" href="/"><i class="fa-solid fa-house"></i> Max Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="about"> <i class="fa-solid fa-circle-info mx-1"></i>About us <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="book_test"> <i class="fa-solid fa-flask mx-1"></i>MAX Lab <span class="sr-only">(current)</span></a>
+        </li>
+        <!-- <li class="nav-item dropdown active">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            
+            Max Lab
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Download Report</a>
+            <a class="dropdown-item" href="book_test">Book a Lab Test</a>
+            <a class="dropdown-item" href="add_patients">Find a Lab Near You</a>
+          </div>
+        </li> -->
+        <li class="nav-item dropdown active">
+          <a class="nav-link" href="health_checkup"><i class="fa-solid fa-stethoscope mx-1"></i> Health Checkup</a>
+          <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="all_appointments">View Appointments</a>
+            <a class="dropdown-item" href="#">Add Appointment</a>
+          </div> -->
+        </li>
+        <li class="nav-item disable">
+          <a class="nav-link" href="#">Immigeration</a>
+        </li>
+        <li class="nav-item dropdown disable">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            International Patients
+          </a>
+          <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div> -->
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% endblock %}
+
+  <!-- alerts -->
+  <div class="main">
+    {% block main %}
+      <div class="jumbotron bg-success my-1">
+        <h1 class="display-3 text-light font-weight-bold">Worlds #1 Health Clinic</h1>
+        <p class="lead text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio atque recusandae ipsa alias mollitia est pariatur laboriosam. Corporis blanditiis vel a architecto quisquam neque tenetur repudiandae exercitationem dignissimos nihil perspiciatis voluptatum at ex cum sit, veniam cumque sapiente eius quae nam excepturi soluta. Repellat molestias officia, asperiores enim quasi et.</p>
+        <hr class="my-4">
+        
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quis saepe quas ex distinctio voluptatem nobis consectetur cumque corrupti expedita.</p>
+        <a href="add_appointment" class="btn btn-success py-4 px-5 active"><h2>Add Appointmen</h2></a>
+      </div>
+
+      <h2 class="display-3 jumbotron my-1 bg-success py-1">Specialists and Procedure</h2>
+      <div class="jumbotron bg-light d-flex justify-content-center align-items-center flex-wrap">
+        {% for x in my_specialists %}
+        <div class="card mx-3 my-1">
+          <div class="card-header">
+            Specialists in
+          </div>
+          <div class="card-body bg-light">
+            <h3 class="card-title">{{x.title}}</h3>
+            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, et?</p>
+            <a href="view_spcilaists/{{x.id}}" class="btn btn-success">View More</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+  {% endblock %}
+  </div>
+
+    <footer class="footer bg-dark p-3">
+        <h1 class=" display-3 text-light">About us</h1>
+        <p class="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim beatae recusandae consequuntur! Doloremque doloribus nemo iusto, alias vero accusantium qui nihil natus temporibus sequi velit culpa enim, atque at est architecto numquam aspernatur necessitatibus, error dolore magnam molestias quam deserunt autem. Natus, nemo in. Officiis ea quidem doloremque ab voluptatum nostrum! Rem aspernatur quia quos alias at veritatis minus repudiandae quas ipsa cupiditate ut, nisi dolorem aliquam excepturi dignissimos? Similique recusandae fuga, corrupti obcaecati a, et dolore nam provident adipisci dolorem sequi facilis non excepturi? Reprehenderit iusto alias nostrum natus facilis aperiam, repudiandae deserunt accusamus cum doloribus, dicta ducimus explicabo.</p>
+
+        <h1 class="display-3 text-light">Contact us</h1>
+        <ul class="link">
+          <li class="nav-item"><a href="#" class="nav-link text-decoration-none"><i class="fa-brands fa-square-facebook"></i></a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-decoration-none"><i class="fa-brands fa-square-x-twitter"></i></a></li>
+          <li class="nav-item"><a href="#" class="nav-link text-decoration-none"><i class="fa-brands fa-instagram"></i></a></li>
+        </ul>
+        <hr class="my-3">
+        <div class="footer-tag text-light">
+          <h5>Max Helath Care &copy; All Rights Reserved</h5>
+        </div>
+    </footer>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
